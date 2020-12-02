@@ -1,0 +1,26 @@
+Arguments: 
+  /Users/kanisorn.sutham/.nvm/versions/node/v14.15.1/bin/node /Users/kanisorn.sutham/.nvm/versions/node/v14.15.1/bin/yarn --verbose
+
+PATH: 
+  /Users/kanisorn.sutham/.nvm/versions/node/v14.15.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.15.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EISDIR: illegal operation on a directory, read
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
