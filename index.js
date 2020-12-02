@@ -1,14 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 /**
  * @param {import('cors')}
  */
 app.use(
   cors({
-    origin: ["http://localhost:8080", "https://poc-logout-spa.vercel.app/"],
+    origin: ["http://localhost:8080", "https://poc-logout-spa.vercel.app"],
     credentials: true,
   })
 );
