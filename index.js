@@ -3,57 +3,53 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
 
-/**
- * @param {import('cors')}
- */
 app.use(
   cors({
     origin: ["http://localhost:8080", "https://poc-logout-spa.vercel.app"],
     credentials: true,
   })
 );
-/**
- * @param {import('express').RequestHandler}
- */
+
 app.get("/", (req, res) => {
-  res.json({
-    hello: "world",
-  });
+  res.send("Success");
 });
 
+const defaultCookieConfig = {
+  maxAge: 24 * 60 * 60 * 1000,
+};
+
 app.get("/refresh", (req, res) => {
-  res.cookie("SameSiteNotSetAndSecure", "this_is_a_cookie", {
+  // setup default cookies
+  res.cookie("C1__SameSiteNotSet_And_Secure", "__value__", {
     secure: true,
-    maxAge: 24 * 60 * 60 * 1000,
+    ...defaultCookieConfig,
   });
-  res.cookie("SameSiteNoneAndSecure", "this_is_a_cookie", {
+  res.cookie("C2__SameSiteNone_And_Secure", "__value__", {
     sameSite: "none",
     secure: true,
-    maxAge: 24 * 60 * 60 * 1000,
+    ...defaultCookieConfig,
   });
-  res.cookie("SameSiteNoneAndNotSecure", "this_is_a_cookie", {
+  res.cookie("C3__SameSiteNone_And_NoSecure", "__value__", {
     sameSite: "none",
     secure: false,
-    maxAge: 24 * 60 * 60 * 1000,
+    ...defaultCookieConfig,
   });
-  res.cookie("SameSiteNotSetAndNotSecure", "this_is_a_cookie", {
-    maxAge: 24 * 60 * 60 * 1000,
+  res.cookie("C4__SameSiteNotSet_And_NoSecure", "__value__", {
+    ...defaultCookieConfig,
   });
-  res.json({
-    hello: "world",
-  });
+
+  res.send("Success");
 });
 
 app.get("/set-new-cookie", (req, res) => {
-  res.cookie("SameSiteNotSetAndNotSecure", "this_is_a_cookie", {
-    maxAge: 24 * 60 * 60 * 1000,
+  // change only SameSiteNotSetAndNotSecure to have sameSite and secure
+  res.cookie("C4__SameSiteNotSet_And_NoSecure", "__value__", {
     sameSite: "none",
     secure: true,
+    ...defaultCookieConfig,
   });
 
-  res.json({
-    hello: "world",
-  });
+  res.send("Success");
 });
 
 app.listen(port, () => {
