@@ -18,7 +18,7 @@ const defaultCookieConfig = {
   maxAge: 24 * 60 * 60 * 1000,
 };
 
-app.get("/refresh", (req, res) => {
+app.get("/get_cookies", (req, res) => {
   // setup default cookies
   res.cookie("C1__SameSiteNotSet_And_Secure", "__value__", {
     secure: true,
@@ -41,7 +41,7 @@ app.get("/refresh", (req, res) => {
   res.send("Success");
 });
 
-app.get("/set-new-cookie", (req, res) => {
+app.get("/set_new_cookie", (req, res) => {
   // change only SameSiteNotSetAndNotSecure to have sameSite and secure
   res.cookie("C4__SameSiteNotSet_And_NoSecure", "__value__", {
     sameSite: "none",
