@@ -16,6 +16,12 @@ app.use(
  * @param {import('express').RequestHandler}
  */
 app.get("/", (req, res) => {
+  res.json({
+    hello: "world",
+  });
+});
+
+app.get("/refresh", (req, res) => {
   res.cookie("SameSiteNotSetAndSecure", "this_is_a_cookie", {
     secure: true,
     maxAge: 24 * 60 * 60 * 1000,
@@ -33,7 +39,6 @@ app.get("/", (req, res) => {
   res.cookie("SameSiteNotSetAndNotSecure", "this_is_a_cookie", {
     maxAge: 24 * 60 * 60 * 1000,
   });
-
   res.json({
     hello: "world",
   });
