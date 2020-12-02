@@ -11,7 +11,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.send("Success");
+  res.send("Not found");
 });
 
 const defaultCookieConfig = {
