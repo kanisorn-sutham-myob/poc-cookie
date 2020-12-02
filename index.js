@@ -8,7 +8,7 @@ const port = 3000;
  */
 app.use(
   cors({
-    origin: "http://localhost:8080",
+    origin: ["http://localhost:8080", "https://poc-logout-spa.vercel.app/"],
     credentials: true,
   })
 );
